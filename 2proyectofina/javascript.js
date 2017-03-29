@@ -15,14 +15,26 @@
 		div.id="div"+i;
 		var caja=document.createElement("input");
 		var boton= document.createElement("input");
+		var boton2= document.createElement("input");
+	
+
         //dar valor a los botones 
 		boton.type="button";
 		boton.value="crearpendiente";
+		boton2.type="button";
+		boton2.value="borrar todo";
+
 		//agrego un addEventListener a los botones que se crean en cada pendiente semanal 
 		if (boton.addEventListener) {
 	    boton.addEventListener('click', crearlista, false);
 	     } else {
 	    boton.attachEvent('onclick', crearlista);
+	    }
+
+	    if(boton2.addEventListener){
+	    	boton2.addEventListener('click',borrartodo,false)
+	    }else {
+	    boton2.attachEvent('onclick', crearlista);
 	    }
 		boton.id="btn"+i;
 		caja.id=i;
@@ -31,6 +43,7 @@
 		
 		elemento.appendChild(caja);
 		elemento.appendChild(boton);
+		elemento.appendChild(boton2);
 
 
 	}
@@ -47,3 +60,11 @@
 		//elimina todos los elementos que se escriben 
 		document.getElementById("div1").innerHTML="";
 	}
+	function borrartodo(){
+		//alert("borrar")
+         //borra todo los hijos del elemento padre el div  con id "semana"
+		var element = document.getElementById("semana");
+        while (element.firstChild) {
+        element.removeChild(element.firstChild);
+	}
+}
